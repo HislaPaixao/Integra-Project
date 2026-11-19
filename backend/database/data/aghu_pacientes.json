@@ -1,0 +1,56 @@
+{
+  "123456": {
+    "nr_prontuario": "123456",
+    "nm_paciente": "Ana Beatriz Ferreira",
+    "nr_cartao_sus": "7000.1234.5678.9012",
+    "nr_cpf": "123.456.789-00",
+    "ds_leito": "Leito 402-A",
+    "nr_consulta": "987654",
+    "ds_clinica_origem": "Clínica Médica Interna"
+  },
+  "654321": {
+    "nr_prontuario": "654321",
+    "nm_paciente": "João Pedro Oliveira",
+    "nr_cartao_sus": "8001.4321.8765.1098",
+    "nr_cpf": "987.654.321-00",
+    "ds_leito": "Leito 110-B",
+    "nr_consulta": "112233",
+    "ds_clinica_origem": "Pronto Atendimento"
+  },
+  "345678": {
+    "nr_prontuario": "345678",
+    "nm_paciente": "Ana Costa",
+    "nr_cartao_sus": "898 0000 1234 5678",
+    "nr_cpf": "111.222.333-44",
+    "ds_leito": "Leito 205-B",
+    "nr_consulta": "345678",
+    "ds_clinica_origem": "Ortopedia"
+  },
+  "778899": {
+    "nr_prontuario": "778899",
+    "nm_paciente": "Marcos Antônio Lima",
+    "nr_cartao_sus": "7001.5566.7788.9900",
+    "nr_cpf": "222.333.444-55",
+    "ds_leito": "Leito 301-C",
+    "nr_consulta": "445566",
+    "ds_clinica_origem": "Clínica Cirúrgica"
+  },
+  "889900": {
+    "nr_prontuario": "889900",
+    "nm_paciente": "Luciana Gomes Rocha",
+    "nr_cartao_sus": "7002.1111.2222.3333",
+    "nr_cpf": "333.444.555-66",
+    "ds_leito": "Leito 118-A",
+    "nr_consulta": "556677",
+    "ds_clinica_origem": "Pediatria"
+  },
+  "990011": {
+    "nr_prontuario": "990011",
+    "nm_paciente": "Roberto Carlos Nunes",
+    "nr_cartao_sus": "7003.4444.5555.6666",
+    "nr_cpf": "444.555.666-77",
+    "ds_leito": "Leito 220-B",
+    "nr_consulta": "667788",
+    "ds_clinica_origem": "Clínica Médica Interna"
+  }
+}

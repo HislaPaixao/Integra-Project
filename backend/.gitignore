@@ -1,0 +1,25 @@
+# Dependências (instaladas com `composer install`)
+/vendor
+/node_modules
+
+# Segredos e configuração local — NUNCA enviar para o GitHub
+.env
+.env.*
+!.env.example
+
+# Gerados pelo Laravel / PHPUnit
+/storage/*.key
+/storage/pail
+.phpunit.result.cache
+/public/storage
+/public/hot
+/public/build
+/bootstrap/cache/*.php
+
+# Bancos locais
+/database/*.sqlite
+/database/*.sqlite-journal
+
+# Editores
+.idea/
+.vscode/

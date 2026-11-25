@@ -1,0 +1,22 @@
+ id | prontuario |   especialidade   |   status   | prio |          local           |  data_agendamento   
+----+------------+-------------------+------------+------+--------------------------+---------------------
+  6 | 990011     | Pneumologia       | Finalizado | P2   | Ambulatório HUB - sala 7 | 2026-12-04 19:02:00
+  7 | 654321     | Gastroenterologia | Finalizado | P3   |                          | 
+(2 linhas)
+
+ id_solicitacao |                                string_agg                                 
+----------------+---------------------------------------------------------------------------
+              6 | CRIACAO > EDICAO > EDICAO > PENDENCIA > COMPLEMENTO > TRIAGEM > REGULACAO
+              7 | CRIACAO > DEVOLUCAO > COMPLEMENTO > TRIAGEM > REGULACAO
+(2 linhas)
+
+ pacientes | prontuarios_distintos 
+-----------+-----------------------
+         6 |                     6
+(1 linha)
+
+ tokens_ativos 
+---------------
+             0
+(1 linha)
+

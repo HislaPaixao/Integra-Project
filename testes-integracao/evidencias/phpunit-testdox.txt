@@ -1,0 +1,60 @@
+Auth (Tests\Feature\Auth)
+ [x] Login com credenciais validas devolve token real e dados do usuario
+ [x] Login com senha errada retorna 401
+ [x] Login com email inexistente retorna 401
+ [x] Login sem campos retorna 422
+ [x] Rota protegida sem token retorna 401 em json
+ [x] O antigo demo token nao funciona mais
+ [x] Token do login da acesso ao me
+ [x] Logout revoga o token
+
+Devolver Solicitacao (Tests\Feature\DevolverSolicitacao)
+ [x] Regulador devolve solicitacao e motivo fica no historico
+ [x] Profissional do nir tambem pode devolver
+ [x] Devolucao sem motivo retorna 422 e nao muda o status
+ [x] Devolucao com motivo muito curto retorna 422
+ [x] Solicitante nao pode devolver
+ [x] Solicitacao finalizada nao pode ser devolvida
+ [x] Devolver solicitacao inexistente retorna 404
+
+Example (Tests\Feature\Example)
+ [x] A pagina inicial redireciona para a documentacao
+
+Example (Tests\Unit\Example)
+ [x] That true is true
+
+Fluxo Consultoria (Tests\Feature\FluxoConsultoria)
+ [x] Fluxo completo da solicitacao ate a devolucao
+
+Paciente Aghu (Tests\Feature\PacienteAghu)
+ [x] Busca no aghu devolve dados e grava o paciente
+ [x] Buscar duas vezes o mesmo prontuario nao duplica o paciente
+ [x] Prontuario inexistente no aghu retorna 404 e nao grava
+ [x] Busca exige login
+
+Solicitacao (Tests\Feature\Solicitacao)
+ [x] Solicitante cadastra solicitacao com paciente existente
+ [x] Cadastro com paciente inexistente retorna 422 e nao grava
+ [x] Cadastro sem campos obrigatorios retorna 422
+ [x] Regulador nao pode cadastrar solicitacao
+ [x] Solicitante atualiza a propria solicitacao
+ [x] Atualizacao nao altera status nem paciente nem solicitante
+ [x] Atualizacao com descricao curta retorna 422
+ [x] Outro solicitante nao pode atualizar
+ [x] Solicitacao finalizada nao pode ser atualizada
+ [x] Solicitacao pendente pode ser atualizada para complementar
+ [x] Listar e consultar solicitacao
+ [x] Consultar solicitacao inexistente retorna 404
+
+Triagem Regulacao (Tests\Feature\TriagemRegulacao)
+ [x] Regulador tria com prioridade
+ [x] Triado exige prioridade
+ [x] Solicitante nao emite parecer
+ [x] Pendencia e complemento voltam para triagem
+ [x] Complementar so quando pendente
+ [x] Nir agenda e finaliza
+ [x] Nir agendamento exige data e local
+ [x] Regulacao so para triado e so nir
+ [x] Listagem filtra por perfil e status
+ [x] Solicitante nao ve solicitacao de outro
+

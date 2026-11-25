@@ -1,0 +1,405 @@
+{
+  "dataHora": "2026-11-24T22:39:35.631Z",
+  "baseUrl": "http://localhost:4200",
+  "backendUrl": "http://127.0.0.1:8000",
+  "node": "v24.15.0",
+  "total": 65,
+  "aprovadas": 65,
+  "falhas": 0,
+  "solicitacoesCriadas": [
+    19,
+    20
+  ],
+  "verificacoes": [
+    {
+      "secao": "1. Infraestrutura",
+      "nome": "Frontend Angular responde e serve a aplicação",
+      "ok": true,
+      "ms": 85
+    },
+    {
+      "secao": "1. Infraestrutura",
+      "nome": "Backend Laravel responde no health check (/up)",
+      "ok": true,
+      "ms": 187
+    },
+    {
+      "secao": "1. Infraestrutura",
+      "nome": "Proxy do Angular encaminha /api ao backend (401 em JSON sem token)",
+      "ok": true,
+      "ms": 209
+    },
+    {
+      "secao": "1. Infraestrutura",
+      "nome": "CORS libera o frontend (preflight com Origin http://localhost:4200)",
+      "ok": true,
+      "ms": 167
+    },
+    {
+      "secao": "2. Autenticação (Sanctum)",
+      "nome": "Login com senha errada → 401 sem revelar qual campo falhou",
+      "ok": true,
+      "ms": 537
+    },
+    {
+      "secao": "2. Autenticação (Sanctum)",
+      "nome": "Login com e-mail inválido → 422",
+      "ok": true,
+      "ms": 219
+    },
+    {
+      "secao": "2. Autenticação (Sanctum)",
+      "nome": "Login como medico devolve token e perfil corretos",
+      "ok": true,
+      "ms": 546
+    },
+    {
+      "secao": "2. Autenticação (Sanctum)",
+      "nome": "Login como regulador devolve token e perfil corretos",
+      "ok": true,
+      "ms": 559
+    },
+    {
+      "secao": "2. Autenticação (Sanctum)",
+      "nome": "Login como nir devolve token e perfil corretos",
+      "ok": true,
+      "ms": 533
+    },
+    {
+      "secao": "2. Autenticação (Sanctum)",
+      "nome": "GET /api/auth/me devolve nome, CRM e perfil do médico (pré-preenchimento HU01)",
+      "ok": true,
+      "ms": 296
+    },
+    {
+      "secao": "2. Autenticação (Sanctum)",
+      "nome": "Token inventado é recusado → 401",
+      "ok": true,
+      "ms": 280
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Prontuário 123456: dados do AGHU + idPaciente gravado",
+      "ok": true,
+      "ms": 327
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Prontuário 654321: dados do AGHU + idPaciente gravado",
+      "ok": true,
+      "ms": 273
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Prontuário 345678: dados do AGHU + idPaciente gravado",
+      "ok": true,
+      "ms": 293
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Prontuário 778899: dados do AGHU + idPaciente gravado",
+      "ok": true,
+      "ms": 270
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Prontuário 889900: dados do AGHU + idPaciente gravado",
+      "ok": true,
+      "ms": 287
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Prontuário 990011: dados do AGHU + idPaciente gravado",
+      "ok": true,
+      "ms": 280
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Buscar o mesmo prontuário de novo não duplica o paciente (mesmo idPaciente)",
+      "ok": true,
+      "ms": 289
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Prontuário inexistente → 404 com mensagem",
+      "ok": true,
+      "ms": 270
+    },
+    {
+      "secao": "3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL",
+      "nome": "Buscar paciente sem login → 401",
+      "ok": true,
+      "ms": 192
+    },
+    {
+      "secao": "4. Criação da solicitação — validações e permissões (HU02)",
+      "nome": "Regulador não pode criar solicitação → 403",
+      "ok": true,
+      "ms": 279
+    },
+    {
+      "secao": "4. Criação da solicitação — validações e permissões (HU02)",
+      "nome": "Descrição clínica com menos de 20 caracteres → 422",
+      "ok": true,
+      "ms": 310
+    },
+    {
+      "secao": "4. Criação da solicitação — validações e permissões (HU02)",
+      "nome": "Clínica destino fora da lista → 422",
+      "ok": true,
+      "ms": 297
+    },
+    {
+      "secao": "4. Criação da solicitação — validações e permissões (HU02)",
+      "nome": "Paciente que não existe no banco → 422",
+      "ok": true,
+      "ms": 295
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Médico cria a solicitação → 201 \"Aguarda triagem\"",
+      "ok": true,
+      "ms": 337
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Lista do médico contém a nova solicitação e só solicitações dele",
+      "ok": true,
+      "ms": 289
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Regulador encontra a solicitação pela busca por prontuário",
+      "ok": true,
+      "ms": 299
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Busca por nome do paciente ignora maiúsculas/minúsculas",
+      "ok": true,
+      "ms": 297
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Filtros de status e clínica do regulador funcionam",
+      "ok": true,
+      "ms": 295
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Médico edita a própria solicitação (PUT) → 200",
+      "ok": true,
+      "ms": 308
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "PUT não permite trocar o status pela API (campo ignorado)",
+      "ok": true,
+      "ms": 307
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Não existe rota DELETE de solicitação → 405",
+      "ok": true,
+      "ms": 260
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Regulador marca \"Pendente\" pedindo informações → 201",
+      "ok": true,
+      "ms": 303
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "NIR não consegue regular solicitação Pendente → 422",
+      "ok": true,
+      "ms": 298
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Médico vê o motivo da pendência no histórico",
+      "ok": true,
+      "ms": 365
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Complemento com menos de 10 caracteres → 422",
+      "ok": true,
+      "ms": 296
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Regulador não pode complementar no lugar do médico → 403",
+      "ok": true,
+      "ms": 284
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Médico complementa → volta para \"Aguarda triagem\"",
+      "ok": true,
+      "ms": 309
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Complementar de novo (não está mais Pendente) → 403",
+      "ok": true,
+      "ms": 285
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Triado sem prioridade → 422",
+      "ok": true,
+      "ms": 301
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Médico não pode emitir parecer → 403",
+      "ok": true,
+      "ms": 282
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Regulador tria com prioridade P2 → \"Triado\"",
+      "ok": true,
+      "ms": 330
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Filtro de prioridade P2 traz a solicitação; NIR a vê entre as triadas",
+      "ok": true,
+      "ms": 604
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Médico não pode mais editar depois da triagem → 403",
+      "ok": true,
+      "ms": 300
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Regulador não pode fazer a regulação do NIR → 403",
+      "ok": true,
+      "ms": 282
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Agendamento com data no passado → 422",
+      "ok": true,
+      "ms": 302
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Agendamento sem local → 422",
+      "ok": true,
+      "ms": 301
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "NIR agenda a consulta → \"Finalizado\"",
+      "ok": true,
+      "ms": 310
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Médico vê Finalizado + prioridade + agendamento + pareceres",
+      "ok": true,
+      "ms": 303
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Histórico registra todas as ações na ordem certa",
+      "ok": true,
+      "ms": 304
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Solicitação finalizada não recebe novo parecer → 422",
+      "ok": true,
+      "ms": 296
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Solicitação finalizada não pode ser devolvida → 422",
+      "ok": true,
+      "ms": 301
+    },
+    {
+      "secao": "5. Fluxo principal: criação → pendência → complemento → triagem → agendamento",
+      "nome": "Solicitação finalizada não pode ser regulada de novo → 422",
+      "ok": true,
+      "ms": 306
+    },
+    {
+      "secao": "6. Devolução (HU09) e devolução do parecer pelo NIR",
+      "nome": "Médico cria a segunda solicitação",
+      "ok": true,
+      "ms": 315
+    },
+    {
+      "secao": "6. Devolução (HU09) e devolução do parecer pelo NIR",
+      "nome": "Médico não pode devolver a própria solicitação → 403",
+      "ok": true,
+      "ms": 277
+    },
+    {
+      "secao": "6. Devolução (HU09) e devolução do parecer pelo NIR",
+      "nome": "Devolução com motivo curto → 422 e status não muda",
+      "ok": true,
+      "ms": 587
+    },
+    {
+      "secao": "6. Devolução (HU09) e devolução do parecer pelo NIR",
+      "nome": "Regulador devolve com motivo → \"Pendente\" e motivo no histórico",
+      "ok": true,
+      "ms": 603
+    },
+    {
+      "secao": "6. Devolução (HU09) e devolução do parecer pelo NIR",
+      "nome": "Médico complementa a devolução → \"Aguarda triagem\"",
+      "ok": true,
+      "ms": 313
+    },
+    {
+      "secao": "6. Devolução (HU09) e devolução do parecer pelo NIR",
+      "nome": "Regulador tria com P3",
+      "ok": true,
+      "ms": 323
+    },
+    {
+      "secao": "6. Devolução (HU09) e devolução do parecer pelo NIR",
+      "nome": "NIR devolve o parecer ao solicitante → \"Finalizado\" sem agendamento",
+      "ok": true,
+      "ms": 589
+    },
+    {
+      "secao": "7. Outros acessos e encerramento de sessão",
+      "nome": "Solicitação inexistente → 404",
+      "ok": true,
+      "ms": 304
+    },
+    {
+      "secao": "7. Outros acessos e encerramento de sessão",
+      "nome": "Parecer para solicitação inexistente → 422",
+      "ok": true,
+      "ms": 290
+    },
+    {
+      "secao": "7. Outros acessos e encerramento de sessão",
+      "nome": "Logout do medico revoga o token (depois disso → 401)",
+      "ok": true,
+      "ms": 538
+    },
+    {
+      "secao": "7. Outros acessos e encerramento de sessão",
+      "nome": "Logout do regulador revoga o token (depois disso → 401)",
+      "ok": true,
+      "ms": 542
+    },
+    {
+      "secao": "7. Outros acessos e encerramento de sessão",
+      "nome": "Logout do nir revoga o token (depois disso → 401)",
+      "ok": true,
+      "ms": 540
+    }
+  ]
+}

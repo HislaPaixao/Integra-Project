@@ -1,0 +1,88 @@
+Teste de integração — Integra / NIR
+Data/hora: 24/11/2026, 19:39:35
+Frontend (proxy): http://localhost:4200   Backend: http://127.0.0.1:8000   Node v24.15.0
+
+■ 1. Infraestrutura
+  ✔ Frontend Angular responde e serve a aplicação (85 ms)
+  ✔ Backend Laravel responde no health check (/up) (187 ms)
+  ✔ Proxy do Angular encaminha /api ao backend (401 em JSON sem token) (209 ms)
+  ✔ CORS libera o frontend (preflight com Origin http://localhost:4200) (167 ms)
+
+■ 2. Autenticação (Sanctum)
+  ✔ Login com senha errada → 401 sem revelar qual campo falhou (537 ms)
+  ✔ Login com e-mail inválido → 422 (219 ms)
+  ✔ Login como medico devolve token e perfil corretos (546 ms)
+  ✔ Login como regulador devolve token e perfil corretos (559 ms)
+  ✔ Login como nir devolve token e perfil corretos (533 ms)
+  ✔ GET /api/auth/me devolve nome, CRM e perfil do médico (pré-preenchimento HU01) (296 ms)
+  ✔ Token inventado é recusado → 401 (280 ms)
+
+■ 3. Pacientes — integração com o AGHU (modo simulado) e gravação no PostgreSQL
+  ✔ Prontuário 123456: dados do AGHU + idPaciente gravado (327 ms)
+  ✔ Prontuário 654321: dados do AGHU + idPaciente gravado (273 ms)
+  ✔ Prontuário 345678: dados do AGHU + idPaciente gravado (293 ms)
+  ✔ Prontuário 778899: dados do AGHU + idPaciente gravado (270 ms)
+  ✔ Prontuário 889900: dados do AGHU + idPaciente gravado (287 ms)
+  ✔ Prontuário 990011: dados do AGHU + idPaciente gravado (280 ms)
+  ✔ Buscar o mesmo prontuário de novo não duplica o paciente (mesmo idPaciente) (289 ms)
+  ✔ Prontuário inexistente → 404 com mensagem (270 ms)
+  ✔ Buscar paciente sem login → 401 (192 ms)
+
+■ 4. Criação da solicitação — validações e permissões (HU02)
+  ✔ Regulador não pode criar solicitação → 403 (279 ms)
+  ✔ Descrição clínica com menos de 20 caracteres → 422 (310 ms)
+  ✔ Clínica destino fora da lista → 422 (297 ms)
+  ✔ Paciente que não existe no banco → 422 (295 ms)
+
+■ 5. Fluxo principal: criação → pendência → complemento → triagem → agendamento
+      (solicitação #19)
+  ✔ Médico cria a solicitação → 201 "Aguarda triagem" (337 ms)
+  ✔ Lista do médico contém a nova solicitação e só solicitações dele (289 ms)
+  ✔ Regulador encontra a solicitação pela busca por prontuário (299 ms)
+  ✔ Busca por nome do paciente ignora maiúsculas/minúsculas (297 ms)
+  ✔ Filtros de status e clínica do regulador funcionam (295 ms)
+  ✔ Médico edita a própria solicitação (PUT) → 200 (308 ms)
+  ✔ PUT não permite trocar o status pela API (campo ignorado) (307 ms)
+  ✔ Não existe rota DELETE de solicitação → 405 (260 ms)
+  ✔ Regulador marca "Pendente" pedindo informações → 201 (303 ms)
+  ✔ NIR não consegue regular solicitação Pendente → 422 (298 ms)
+  ✔ Médico vê o motivo da pendência no histórico (365 ms)
+  ✔ Complemento com menos de 10 caracteres → 422 (296 ms)
+  ✔ Regulador não pode complementar no lugar do médico → 403 (284 ms)
+  ✔ Médico complementa → volta para "Aguarda triagem" (309 ms)
+  ✔ Complementar de novo (não está mais Pendente) → 403 (285 ms)
+  ✔ Triado sem prioridade → 422 (301 ms)
+  ✔ Médico não pode emitir parecer → 403 (282 ms)
+  ✔ Regulador tria com prioridade P2 → "Triado" (330 ms)
+  ✔ Filtro de prioridade P2 traz a solicitação; NIR a vê entre as triadas (604 ms)
+  ✔ Médico não pode mais editar depois da triagem → 403 (300 ms)
+  ✔ Regulador não pode fazer a regulação do NIR → 403 (282 ms)
+  ✔ Agendamento com data no passado → 422 (302 ms)
+  ✔ Agendamento sem local → 422 (301 ms)
+  ✔ NIR agenda a consulta → "Finalizado" (310 ms)
+  ✔ Médico vê Finalizado + prioridade + agendamento + pareceres (303 ms)
+  ✔ Histórico registra todas as ações na ordem certa (304 ms)
+  ✔ Solicitação finalizada não recebe novo parecer → 422 (296 ms)
+  ✔ Solicitação finalizada não pode ser devolvida → 422 (301 ms)
+  ✔ Solicitação finalizada não pode ser regulada de novo → 422 (306 ms)
+
+■ 6. Devolução (HU09) e devolução do parecer pelo NIR
+      (solicitação #20)
+  ✔ Médico cria a segunda solicitação (315 ms)
+  ✔ Médico não pode devolver a própria solicitação → 403 (277 ms)
+  ✔ Devolução com motivo curto → 422 e status não muda (587 ms)
+  ✔ Regulador devolve com motivo → "Pendente" e motivo no histórico (603 ms)
+  ✔ Médico complementa a devolução → "Aguarda triagem" (313 ms)
+  ✔ Regulador tria com P3 (323 ms)
+  ✔ NIR devolve o parecer ao solicitante → "Finalizado" sem agendamento (589 ms)
+
+■ 7. Outros acessos e encerramento de sessão
+  ✔ Solicitação inexistente → 404 (304 ms)
+  ✔ Parecer para solicitação inexistente → 422 (290 ms)
+  ✔ Logout do medico revoga o token (depois disso → 401) (538 ms)
+  ✔ Logout do regulador revoga o token (depois disso → 401) (542 ms)
+  ✔ Logout do nir revoga o token (depois disso → 401) (540 ms)
+
+────────────────────────────────────────────────────────────
+Resultado: 65/65 verificações passaram
+Duração: 21.6 s

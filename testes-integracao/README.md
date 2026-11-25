@@ -96,3 +96,4 @@ node testes-integracao/fluxo-completo.mjs
 ```
 
 O script não precisa de dependências (Node 18+), pode rodar quantas vezes quiser no mesmo banco e termina com código 1 se alguma verificação falhar. Para apontar para outro endereço: `BASE_URL=http://localhost:4200 BACKEND_URL=http://127.0.0.1:8000`.
+No PowerShell (Windows), defina as variáveis antes de rodar: `$env:BASE_URL="http://localhost:4200"; $env:BACKEND_URL="http://127.0.0.1:8000"`.
